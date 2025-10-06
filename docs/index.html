@@ -26,6 +26,11 @@
     .row { position: relative; z-index: 2; }
 #inp { position: relative; z-index: 3; }
 #log { pointer-events: auto; }
+    /* zorg dat niets boven het inputveld ligt */
+.card { position: relative; }
+#log  { position: relative; z-index: 1; pointer-events: none; }  /* belangrijk: none */
+.row  { position: relative; z-index: 2; }
+#inp, #send { position: relative; z-index: 3; }
   </style>
 </head>
 <body>
