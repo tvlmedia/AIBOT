@@ -58,49 +58,55 @@
     <p class="muted">Deze pagina draait op GitHub Pages. De AI logica draait op je eigen backend (/chat endpoint).</p>
   </div>
 
-  <script src="./config.js"></script>
-  <script>
-    const API = (window.API_BASE || '').replace(/\/$/, '');
-    document.getElementById('endpoint').textContent = API || '(geen backend ingesteld)';
-    const log = document.getElementById('log');
-    const inp = document.getElementById('inp');
-    const send = document.getElementById('send');
+<script src="./config.js"></script>
+<script>
+  const API = (window.API_BASE || '').replace(/\/$/, '');
+  document.getElementById('endpoint').textContent = API || '(geen backend ingesteld)';
+  const log = document.getElementById('log');
+  const inp = document.getElementById('inp');
+  const send = document.getElementById('send');
 
-    function add(role, text){
-      const div = document.createElement('div');
-      div.className = 'msg ' + (role === 'user' ? 'user' : 'bot');
-      div.textContent = text;
-      log.appendChild(div);
-      log.scrollTop = log.scrollHeight;
-    }
+  // ✅ Zorg dat input automatisch focus krijgt
+  window.addEventListener('DOMContentLoaded', () => setTimeout(() => inp.focus(), 0));
 
-    async function ask(){
-      const q = inp.value.trim();
-      if(!q) return;
-      add('user', q);
-      inp.value = '';
-      try {
-        const r = await fetch(API + '/chat', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: q })
-        });
-        const data = await r.json();
-        let ans = data && data.answer ? data.answer : 'Er ging iets mis.';
-        add('bot', ans);
-        if (Array.isArray(data?.sources) && data.sources.length){
-          const last = log.lastChild;
-          const src = document.createElement('div');
-          src.className = 'src';
-          src.textContent = 'Bronnen: ' + data.sources.map(s => `${s.source} (score ${s.score})`).join(' • ');
-          last.appendChild(src);
-        }
-      } catch (e){
-        add('bot', 'Kan de server niet bereiken. Controleer je backend URL in docs/config.js en CORS.');
+  function add(role, text){
+    const div = document.createElement('div');
+    div.className = 'msg ' + (role === 'user' ? 'user' : 'bot');
+    div.textContent = text;
+    log.appendChild(div);
+    log.scrollTop = log.scrollHeight;
+  }
+
+  async function ask(){
+    const q = inp.value.trim();
+    if (!q) { inp.focus(); return; } // ✅ focus terug bij lege invoer
+    add('user', q);
+    inp.value = '';
+    try {
+      const r = await fetch(API + '/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: q })
+      });
+      const data = await r.json();
+      let ans = data && data.answer ? data.answer : 'Er ging iets mis.';
+      add('bot', ans);
+      if (Array.isArray(data?.sources) && data.sources.length){
+        const last = log.lastChild;
+        const src = document.createElement('div');
+        src.className = 'src';
+        src.textContent = 'Bronnen: ' + data.sources.map(s => `${s.source} (score ${s.score})`).join(' • ');
+        last.appendChild(src);
       }
+    } catch (e){
+      add('bot', 'Kan de server niet bereiken. Controleer je backend URL in docs/config.js en CORS.');
     }
-    send.onclick = ask;
-    inp.onkeydown = e => (e.key === 'Enter') && ask();
-  </script>
-</body>
-</html>
+    setTimeout(() => inp.focus(), 0); // ✅ focus terug na antwoord
+  }
+
+  send.onclick = ask;
+  inp.onkeydown = e => (e.key === 'Enter') && ask();
+
+  // ✅ Test: laat keypresses in de console zien
+  inp.addEventListener('keydown', e => console.log('key:', e.key));
+</script>
