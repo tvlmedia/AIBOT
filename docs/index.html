@@ -33,10 +33,18 @@
     <h1>AIBOT</h1>
     <div class="card">
       <div id="log"></div>
-      <div class="row">
-        <input id="inp" placeholder="Typ je vraag…" autofocus />
-        <button id="send">Stuur</button>
-      </div>
+     <div class="row">
+  <input
+    id="inp"
+    type="text"
+    placeholder="Typ je vraag…"
+    autocomplete="off"
+    autocapitalize="off"
+    spellcheck="false"
+    autofocus
+  />
+  <button id="send">Stuur</button>
+</div>
       <footer>
         <div class="muted">Verbindt met: <code id="endpoint"></code></div>
         <div class="muted">Tip: druk op Enter om te sturen</div>
