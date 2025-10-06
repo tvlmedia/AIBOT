@@ -6,107 +6,108 @@
   <title>AIBOT — Chat</title>
   <style>
     :root{ --bg:#0b0f14; --card:#111827; --soft:#1f2937; --text:#e5e7eb; --muted:#9ca3af; }
-    html,body{ background:var(--bg); color:var(--text); margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; }
-    .wrap{ max-width:900px; margin:24px auto; padding:0 16px; }
-    h1{ font-size:28px; margin:8px 0 16px; }
-    .card{ background:var(--card); border-radius:16px; padding:16px; box-shadow:0 6px 20px rgba(0,0,0,0.25); }
-    #log{ min-height:320px; max-height:60vh; overflow:auto; }
-    .msg{ padding:10px 12px; border-radius:12px; margin:8px 0; line-height:1.35; white-space:pre-wrap; }
-    .user{ background:var(--soft); margin-left:15%; }
-    .bot{ background:#0f172a; margin-right:15%; }
-    .row{ display:flex; gap:8px; margin-top:12px; }
-    input, button, textarea{ font-size:16px; padding:12px 14px; border-radius:10px; border:1px solid #374151; background:#0b1220; color:var(--text); }
-    input, textarea{ flex:1; }
-    button{ cursor:pointer; background:#2563eb; border:none; transition:.15s; }
-    button:hover{ filter:brightness(1.08); }
-    .muted{ color:var(--muted); font-size:13px; }
-    footer{ margin-top:10px; display:flex; justify-content:space-between; align-items:center; }
-    a{ color:#93c5fd; }
-    .src{ font-size:12px; color:#a3a3a3; margin-top:4px; }
-    .row { position: relative; z-index: 2; }
-#inp { position: relative; z-index: 3; }
-#log { pointer-events: auto; }
-    /* zorg dat niets boven het inputveld ligt */
-.card { position: relative; }
-#log  { position: relative; z-index: 1; pointer-events: none; }  /* belangrijk: none */
-.row  { position: relative; z-index: 2; }
-#inp, #send { position: relative; z-index: 3; }
+    html,body{ background:var(--bg); color:var(--text); margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial }
+    .wrap{ max-width:900px; margin:24px auto; padding:0 16px }
+    h1{ font-size:28px; margin:8px 0 16px }
+    .card{ background:var(--card); border-radius:16px; padding:16px; box-shadow:0 6px 20px rgba(0,0,0,.25); position:relative }
+    #log{ min-height:320px; max-height:60vh; overflow:auto; pointer-events:none !important; position:relative; z-index:1 }
+    .msg{ padding:10px 12px; border-radius:12px; margin:8px 0; line-height:1.4; white-space:pre-wrap }
+    .user{ background:var(--soft); margin-left:15% }
+    .bot{ background:#0f172a; margin-right:15% }
+    .row{ display:flex; gap:8px; margin-top:12px; position:relative; z-index:3 }
+    textarea, button{ font-size:16px; border-radius:10px; border:1px solid #374151 }
+    textarea{ flex:1; padding:12px 14px; background:#0b1220; color:var(--text); resize:none; min-height:48px; max-height:160px }
+    button{ cursor:pointer; background:#2563eb; color:#fff; padding:12px 16px; border:none; transition:.15s }
+    button:hover{ filter:brightness(1.08) }
+    .muted{ color:var(--muted); font-size:13px }
+    footer{ margin-top:10px; display:flex; justify-content:space-between; align-items:center }
+    code{ color:#93c5fd }
+    .src{ font-size:12px; color:#a3a3a3; margin-top:4px }
   </style>
 </head>
 <body>
   <div class="wrap">
     <h1>AIBOT</h1>
     <div class="card">
-      <div id="log"></div>
-     <div class="row">
-  <input
-    id="inp"
-    type="text"
-    placeholder="Typ je vraag…"
-    autocomplete="off"
-    autocapitalize="off"
-    spellcheck="false"
-    autofocus
-  />
-  <button id="send">Stuur</button>
-</div>
+      <div id="log" aria-live="polite"></div>
+
+      <div class="row">
+        <textarea id="inp" placeholder="Typ je vraag… (Enter = sturen, Shift+Enter = nieuwe regel)" autocomplete="off" autocapitalize="off" spellcheck="false"></textarea>
+        <button id="send">Stuur</button>
+      </div>
+
       <footer>
         <div class="muted">Verbindt met: <code id="endpoint"></code></div>
-        <div class="muted">Tip: druk op Enter om te sturen</div>
+        <div class="muted">Tip: Enter = sturen • Shift+Enter = regel</div>
       </footer>
     </div>
-    <p class="muted">Deze pagina draait op GitHub Pages. De AI logica draait op je eigen backend (/chat endpoint).</p>
+
+    <p class="muted">Deze pagina draait op GitHub Pages. De AI-logica draait op je eigen backend (/chat endpoint).</p>
   </div>
 
-<script src="./config.js"></script>
-<script>
-  const API = (window.API_BASE || '').replace(/\/$/, '');
-  document.getElementById('endpoint').textContent = API || '(geen backend ingesteld)';
-  const log = document.getElementById('log');
-  const inp = document.getElementById('inp');
-  const send = document.getElementById('send');
+  <script src="./config.js"></script>
+  <script>
+    const API = (window.API_BASE || '').replace(/\/$/, '');
+    const ep  = document.getElementById('endpoint');
+    const log = document.getElementById('log');
+    const inp = document.getElementById('inp');
+    const btn = document.getElementById('send');
 
-  // ✅ Zorg dat input automatisch focus krijgt
-  window.addEventListener('DOMContentLoaded', () => setTimeout(() => inp.focus(), 0));
+    ep.textContent = API || '(geen backend ingesteld)';
 
-  function add(role, text){
-    const div = document.createElement('div');
-    div.className = 'msg ' + (role === 'user' ? 'user' : 'bot');
-    div.textContent = text;
-    log.appendChild(div);
-    log.scrollTop = log.scrollHeight;
-  }
+    // autofocus + zeker weten dat niets het typpen blokkeert
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => inp.focus(), 0);
+      // uiterste safeguard: als er iets bovenop ligt, zet pointer-events uit
+      log.style.pointerEvents = 'none';
+    });
 
-  async function ask(){
-    const q = inp.value.trim();
-    if (!q) { inp.focus(); return; } // ✅ focus terug bij lege invoer
-    add('user', q);
-    inp.value = '';
-    try {
-      const r = await fetch(API + '/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: q })
-      });
-      const data = await r.json();
-      let ans = data && data.answer ? data.answer : 'Er ging iets mis.';
-      add('bot', ans);
-      if (Array.isArray(data?.sources) && data.sources.length){
-        const last = log.lastChild;
-        const src = document.createElement('div');
-        src.className = 'src';
-        src.textContent = 'Bronnen: ' + data.sources.map(s => `${s.source} (score ${s.score})`).join(' • ');
-        last.appendChild(src);
-      }
-    } catch (e){
-      add('bot', 'Kan de server niet bereiken. Controleer je backend URL in docs/config.js en CORS.');
+    function add(role, text){
+      const div = document.createElement('div');
+      div.className = 'msg ' + (role === 'user' ? 'user' : 'bot');
+      div.textContent = text;
+      log.appendChild(div);
+      log.scrollTop = log.scrollHeight;
     }
-    setTimeout(() => inp.focus(), 0); // ✅ focus terug na antwoord
-  }
 
-  send.onclick = ask;
-  inp.onkeydown = e => (e.key === 'Enter') && ask();
+    async function ask(){
+      const q = inp.value.trim();
+      if (!q){ inp.focus(); return; }
+      add('user', q);
+      inp.value = '';
+      btn.disabled = true;
 
-  // ✅ Test: laat keypresses in de console zien
-  inp.addEventListener('keydown', e => console.log('key:', e.key));
-</script>
+      try{
+        const r = await fetch(API + '/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: q })
+        });
+        const data = await r.json().catch(()=>({}));
+        const ans = data?.answer || 'Er ging iets mis.';
+        add('bot', ans);
+        if (Array.isArray(data?.sources) && data.sources.length){
+          const last = log.lastChild;
+          const src = document.createElement('div');
+          src.className = 'src';
+          src.textContent = 'Bronnen: ' + data.sources.map(s => `${s.source} (score ${s.score})`).join(' • ');
+          last.appendChild(src);
+        }
+      }catch(e){
+        add('bot', 'Kan de server niet bereiken. Controleer je backend URL in docs/config.js en CORS.');
+      }finally{
+        btn.disabled = false;
+        setTimeout(() => inp.focus(), 0);
+      }
+    }
+
+    btn.onclick = ask;
+    inp.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ask(); }
+    });
+
+    // debug: zie toetsaanslagen in console (mag blijven of weghalen)
+    inp.addEventListener('keydown', e => console.log('key:', e.key));
+  </script>
+</body>
+</html>
