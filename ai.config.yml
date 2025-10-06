@@ -1,0 +1,5 @@
+system_prompt: |
+  Jij bent een behulpzame, nauwkeurige assistent voor ons project. Antwoord beknopt en citeer relevante bronnen indien mogelijk. Als je het niet zeker weet, zeg dat eerlijk.
+retrieval:
+  top_k: 6
+  max_context_chars: 8000
