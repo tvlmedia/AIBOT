@@ -31,6 +31,8 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: npm run embed
+- name: Copy embeddings to docs
+  run: mkdir -p docs && cp embeddings.json docs/embeddings.json
 
       - name: Commit embeddings.json
         uses: EndBug/add-and-commit@v9
