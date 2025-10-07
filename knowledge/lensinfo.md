@@ -78,3 +78,99 @@ Cooke Panchro Classic FF is een topklasse cine-lensset die geschikt is als **hoo
 | 🎬 Speelfilm met natuurlijke look | Filmisch karakter + betrouwbare mechanics | T2.2 → let op lichtniveau |
 | 📺 High-end commercial | Mooie huidtinten + consistente kleur | Gewicht bij handheld |
 | 🎥 Kunstproject / videoclip | Klassieke look met subtiele vintage vibe | Minder extreem dan Zeiss Jena of Red P |
+
+
+
+
+# 🎥 IronGlass Soviet MKII – Rehoused Sovjetklassiekers met rauw karakter
+
+De **IronGlass Soviet MKII**-set is een unieke collectie van gerehousde Sovjetlenzen uit de jaren ’50 en ’60, waaronder de legendarische **Helios 44-2** – een lens die bijna elke cameraman ooit wel eens op Marktplaats of eBay heeft gescoord. Deze tweede generatie (*MKII*) rehousings van IronGlass brengt dat ruwe vintage karakter naar moderne sets, met een bouwkwaliteit die zich kan meten met high-end rehousings van bijvoorbeeld TLS.
+
+---
+
+## 🧬 Historie & achtergrond
+
+De MKII-serie is gebaseerd op originele Sovjetlenzen die decennialang gebruikt zijn voor fotografie en film. IronGlass heeft deze optische elementen volledig opnieuw gehoused voor professionele cinematografie.  
+Hieronder een overzicht van de set:
+
+| Originele lens | Brandpuntsafstand | T-stop | Close focus |
+|----------------|-------------------|--------|--------------|
+| MIR-20M        | 20mm              | T3.6   | 0.17 m       |
+| MIR-10A        | 28mm              | T3.6   | 0.20 m       |
+| MIR-1B         | 37mm              | T2.9   | 0.36 m       |
+| Helios 44-2    | 58mm              | T2.1   | 0.46 m       |
+| Helios 40-2    | 85mm              | T1.6   | 0.75 m       |
+| Tair-11A       | 135mm             | T2.9   | 1.15 m       |
+
+Alle lenzen zijn **Full Frame** en de meeste coveren zelfs **Medium Format**.
+
+---
+
+## ✨ Karakter & beeldlook
+
+Deze set staat bekend om zijn uitgesproken, artistieke look. Denk aan:
+
+- 🌪️ **Swirly bokeh** – iconisch voor de Helios-glasformules  
+- 🌈 **Heftige flares** – expressief en creatief inzetbaar  
+- 🌙 **Dreamy rendering** – zachter in de hoeken, scherp in het midden  
+- ✨ **Inperfectie als stijl** – microcontrast en aberraties dragen bij aan een unieke sfeer  
+
+Hun karakter is zo onderscheidend dat ze onder andere zijn gebruikt in films als **_The Batman_** en **_Dune: Part Two_** – een bewijs dat deze optiek ook op het hoogste niveau serieus wordt genomen.
+
+---
+
+## 📸 Beste toepassingen
+
+De IronGlass MKII-set komt het beste tot zijn recht wanneer je een uitgesproken look zoekt die bewust afwijkt van “mainstream” cinema-optiek. Denk aan:
+
+- 🎬 **Artsy shortfilms** – visueel experiment en storytelling met karakter  
+- 🎥 **Videoclips** – sterke esthetische keuzes en flares  
+- 🖼️ **Fashion & art projecten** – sfeer en gevoel boven technische perfectie  
+- 🔮 **Flashbacks / droomsequenties** – zachtheid en imperfectie werken hier in je voordeel  
+
+📉 **Minder geschikt:**  
+- Als *primaire set voor een speelfilm* waar consistentie, voorspelbaarheid en maximale scherpte cruciaal zijn  
+- Voor low-light nachtopnames (vooral de 20mm en 28mm zijn met **T3.6** relatief “slow”)
+
+---
+
+## ⚙️ Techniek & bouwkwaliteit
+
+- 🛠️ **Professionele rehousing (MKII)** – rock-solid bouw, geen problemen met matte boxen of focus motors  
+- ⚖️ **Relatief lichtgewicht** – goed inzetbaar op gimbals en handheld rigs  
+- 🔧 **Moderne ergonomie** – uniforme focus gearing, consistente frontdiameters  
+- 📏 **Full Frame coverage**, veel lenzen zelfs geschikt voor **Medium Format**
+
+IronGlass heeft met deze MKII-reeks een set gebouwd die qua feel en betrouwbaarheid niet onderdoet voor veel duurdere cine-rehousings.
+
+---
+
+## ⚖️ Voordelen & aandachtspunten
+
+✅ **Voordelen**  
+- Unieke, uitgesproken vintage look  
+- Professionele moderne rehousing  
+- Full Frame (vaak Medium Format) coverage  
+- Licht en prettig in gebruik  
+- Betaalbare manier om high-end karakter te krijgen  
+
+⚠️ **Aandachtspunten**  
+- Niet ideaal als *hoofdset* voor lange speelfilms  
+- Hogere T-stops bij groothoek (meer licht nodig)  
+- Look is “heftig” – past niet bij elk project  
+- Sample-variatie inherent aan originele Sovjetoptiek
+
+---
+
+## 🧠 Eerlijke conclusie
+
+De IronGlass Soviet MKII-set is geen “one size fits all”-optie – en dat is precies hun kracht. Ze zijn ideaal wanneer je een uitgesproken, creatieve stijl zoekt en de look een integraal onderdeel van je verhaal moet zijn.  
+
+Voor een commerciële set of een speelfilm waar maximale consistentie vereist is, raden we eerder de **Cooke Panchro FF** of **DZO Arles** aan. Maar als je weet waar je aan begint en bewust kiest voor karakter en imperfectie, krijg je hier een set die een ongeëvenaarde sfeer kan neerzetten.
+
+📚 Meer info: [IronGlass MKII productpagina](https://ironglassadapters.com/rehoused-soviet-lenses/mkii/id/23/)
+
+---
+
+✅ **Advies van TVL Rental:**  
+> “Als je op zoek bent naar uitgesproken, karaktervolle beelden – en je weet dat dat past bij je project – dan zijn de IronGlass MKII’s een fantastische keuze. Wees je er wel van bewust dat ze niet voor elke situatie geschikt zijn. Wil je liever een meer voorspelbare en consistente look, dan is bijvoorbeeld de Cooke Panchro FF een betere optie.”
