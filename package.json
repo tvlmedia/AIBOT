@@ -1,11 +1,10 @@
 {
-  "name": "aibot",
   "type": "module",
-  "dependencies": {
-    "glob": "^10.3.10",
-    "openai": "^4.58.1"
-  },
   "scripts": {
     "embed": "node scripts/build_embeddings.js"
+  },
+  "dependencies": {
+    "openai": "^4.56.0",
+    "glob": "^10.3.10"
   }
 }
