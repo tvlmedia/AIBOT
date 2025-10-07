@@ -26,17 +26,13 @@ function splitIntoChunks(text, max = 1200) {
 }
 
 async function embedChunks(chunks) {
-  const res = await openai.embeddings.create({
-    model: MODEL,
-    input: chunks
-  });
-  return res.data.map((d) => d.embedding);
+  const res = await openai.embeddings.create({ model: MODEL, input: chunks });
+  return res.data.map(d => d.embedding);
 }
 
 async function main() {
   if (!process.env.OPENAI_API_KEY) {
-    console.error("Missing OPENAI_API_KEY");
-    process.exit(1);
+    console.error("Missing OPENAI_API_KEY"); process.exit(1);
   }
   const files = glob.sync(path.join(KNOWLEDGE_DIR, "**/*.md"));
   const index = [];
@@ -46,19 +42,15 @@ async function main() {
     if (!chunks.length) continue;
     const vectors = await embedChunks(chunks);
     chunks.forEach((content, i) => {
-      index.push({
-        source: path.relative(process.cwd(), file),
-        content,
-        embedding: vectors[i]
-      });
+      index.push({ source: path.relative(process.cwd(), file), content, embedding: vectors[i] });
     });
     console.log(`Embedded ${file} -> ${chunks.length} chunks`);
   }
-  fs.writeFileSync(OUTFILE, JSON.stringify({ createdAt: new Date().toISOString(), items: index }, null, 2));
+  fs.writeFileSync(
+    OUTFILE,
+    JSON.stringify({ createdAt: new Date().toISOString(), items: index }, null, 2)
+  );
   console.log(`Wrote ${OUTFILE} with ${index.length} chunks.`);
 }
 
-main().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+main().catch(e => { console.error(e); process.exit(1); });
