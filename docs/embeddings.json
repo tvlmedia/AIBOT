@@ -39,3 +39,7 @@ jobs:
         with:
           add: "embeddings.json"
           message: "chore: update embeddings"
+{
+  "createdAt": "temp",
+  "items": []
+}
