@@ -1,15 +1,16 @@
-# FAQ — Project Chatbot
+# TVL Rental – Veelgestelde vragen
 
-## Wat is dit?
-Een Node.js chatbot met RAG die antwoorden kan geven op basis van Markdown in `/knowledge`.
+## Wat zijn jullie openingstijden?
 
-## Hoe train ik 'm?
-Gewoon nieuwe `.md`-bestanden toevoegen en pushen naar GitHub. De Action bouwt embeddings automatisch.
 
-## Welke modellen?
-- Chat: `gpt-4o-mini` (pas aan via `.env`/Actions secret)
-- Embeddings: `text-embedding-3-small`
+## Hoe kan ik huren?
+Reserveren kan via **info@tvlrental.nl** of telefonisch via **+31 (0)6 12345678**.  
+Vermeld altijd:
+- De gewenste apparatuur en lenzen
+- De huurperiode
+- Het type project (film, commercial, videoclip, etc.)
 
-## Beperkingen
-- Contextlengte en retrieval zijn begrensd; zie `ai.config.yml`.
-- Geen stateful gebruikerssessies out-of-the-box (kan je toevoegen).
+## Leveren jullie op locatie?
+Ja, wij leveren op set in heel Nederland en België.  
+Transportkosten worden berekend op basis van afstand en type apparatuur.
+
